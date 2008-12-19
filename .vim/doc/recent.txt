@@ -1,0 +1,255 @@
+*recent.txt*	Quick access to recently written files
+
+		For Vim version 7.0.  Last change: 2007 Jun 07
+		By Andy Wokula <anwoku .at. yahoo .dot. de>
+
+						*recent* *recent.vim*
+
+1. Purpose					|recent-intro|
+2. Installation					|recent-install|
+3. Usage					|recent-usage|
+4. Customization				|recent-customize|
+
+==============================================================================
+1. Purpose					*recent-intro*
+
+Recent.vim keeps track of files you have _written_ recently.  This is useful
+to continue work on files that are scattered around the file system.
+
+The list of filenames is persistently stored in |recent_files|.
+
+Per default, the filelist shows up at startup if no other file is loaded.
+Also a menu with commands gets installed.  To turn these things off:
+|g:RecentStartup|, |g:RecentMenu|.
+
+To open a file of the list, several commands and options are provided to make
+use of windows and tabpages: |recent-usage|.
+
+Miscellaneous: |recent-additional|, |recent-not|.
+
+==============================================================================
+2. Installation					*recent-install*
+
+Recent.vim is a general plugin.  Put it into the |plugin| folder or |:source|
+it directly during session.  More info: |add-plugin|.
+
+Install this help file: |:helptags|.
+
+Customization
+-------------
+The script runs out of the box, but you can add some variables from the
+|recent-customize| section to your vimrc.
+
+Commands from |recent-usage| are not mapped to keys, you should do that
+yourself in the vimrc.  Example: >
+	nno <silent> <leader>r :Recent<cr>
+	nno <silent> <leader>a :RememberFile<cr>
+	nno <silent> <leader>w :RecentWinmode<cr>
+	nno <silent> <leader>t :RecentReuse<cr>
+<
+In case you don't know what <leader> is: |<Leader>|.
+
+To prevent the plugin from loading: >
+	let loaded_recent = 1
+
+Requirements
+------------
+'compatible' (Vi) and 'insertmode' (EasyVim) must be turned off.
+
+Make sure Vim7 is compiled with patch 220 to avoid crashes now and then (bug
+with wincmd("#")).
+
+==============================================================================
+3. Usage					*recent-usage*
+
+Overview of available commands:
+|:Recent|		open file list
+|:RememberFile|		manually add current file
+|:RecentWinmode|	change the |Winmode|
+|:RecentReuse|		reuse windows or not
+
+						*recent-keys*
+Keys in the file list buffer:
+<Enter>		go to file under cursor using current |Winmode|
+<2-LeftMouse>	dito
+gf		go to file reusing the current window (Winmode "thiswin")
+CTRL-W_f	go to file using a new window (Winmode "newwin")
+CTRL-W_gf	go to file using a new tabpage (Winmode "newtab")
+
+Note:	If there is an existing window for a buffer, commands and keys will
+	always reuse this (not customizable).
+	Use |:split| to get more views on a buffer.
+
+Commands
+--------
+						*:Recent*
+:Recent			Open the file list |recent_files|, sensitively to
+			|Winmode|.  Uses current window if its buffer is
+			unnamed and unmodified.
+
+						*:RememberFile*
+:RememberFile		Manually add the current file to the list.
+			Uses |:Recent| to open the file list for adding the
+			entry.	If the entry is already there, merely jumps to
+			it.  This is like a reverse lookup.
+
+			Note: Files that match |g:RecentIgnore| are not added.
+
+						*:RecentWinmode*
+:RecentWinmode		Change |Winmode| by cycling |g:RecentWinmode|.
+
+						*:RecentReuse*
+:RecentReuse		Change Winmode behaviour of |recent-keys| by toggling
+			|g:RecentReuse|.  There is no other side effect.
+
+	The following description applies if g:RecentReuse is turned on:
+		Reuse last accessed tabpage or window: on ~
+
+	If |Winmode| is "thiswin", |recent-keys| reuse the previous window
+	(|CTRL-W_p|) of the current tabpage.
+	This is like examining errors in the |quickfix| window.  You should
+	first open a new window (the previous window to recent_files) and then
+	double click files in the |recent_files| list.	Each file is opened in
+	the same window.
+
+	If |Winmode| is "newwin", a new window is created next to the previous
+	window of the last accessed tabpage.  The last accessed tabpage is
+	determined when jumping to the file list with |:Recent|.  Switching
+	tabpages with |gt| or with the mouse has no influence.  Thus, if you
+	want to reuse a certain tabpage, first make it current, then use
+	:Recent.  This mode also allows for a vertical view in the current
+	tabpage: Use |:vnew| to create the alternate window to recent_files.
+
+	Winmode "newtab" is not changed.
+
+This can be confusing sometimes, I will make it more user-friendly as soon as
+I get an idea how.
+
+Example:
+Open two files from the list in two windows within the same other tabpage. >
+	:Recent
+	:RecentWinmode		" Repeat the command until "newtab"
+	" Press Enter on a file to open it in a new tabpage
+	:Recent
+	:RecentWinmode		" Repeat the command until "newwin"
+	:RecentReuse		" Toggle to "on"
+	" Press Enter on another file to open it next to the first file
+<
+
+						*Winmode*
+There are three Winmodes:
+	"thiswin", "newwin", "newtab" ~
+These are possible values to |g:RecentWinmode|.  Commands read this variable
+to open a file in the current window, in a new window or in a new tabpage.
+
+Winmode sensitive commands: |recent-keys|, |:Recent| and |:RememberFile|.
+
+Note: Sometimes, "thiswin" opens a new window -- this is the case if
+      the current buffer is |'modified'| or |'buftype'| is not empty or the
+      window has the |'previewwindow'| option set.
+      The options |'hidden'| and |'autowrite'| are ignored.
+
+						*recent-additional*
+Miscellaneous
+-------------
+There is no explicit limit in the number of remembered files.
+
+Editing in the |recent_files| buffer is allowed.  If plugin-commands move to
+another window, the file list automatically gets saved.
+
+If a file is unreadable, pressing Enter on its filename silently removes the
+entry from the list (!).  Use |undo| to get it back.
+
+File names in the list can be highlighted based on file suffixes:
+|g:RecentTypes|, |g:RecentHlGroups|
+
+Commands always jump to the last known file position |`quote|.
+
+Certain files can be ignored via |g:RecentIgnore|.
+
+The plugin tries to update recent_files only when necessary.  Files opened
+from the list are not added again, also files that were written the first
+time.
+
+						*recent-not*
+Features not here
+-----------------
+Support for Vim 6.  GUI |menu| with the most recently written files.
+Customizable position of new windows and tabpages.  Filename completion in
+command-line |:command-completion-custom|.  Open many files at once.  Remove
+dead files.
+
+==============================================================================
+4. Customization				*recent-customize*
+
+There are some global variables that can be set in the |.vimrc|.
+In the description below, values assigned are the default values.
+The |g:| prefix in global variables is optional when not used in a function.
+
+					*recent_files* *g:RecentFullname*
+File which stores the list of files to be remembered.
+Location (string): >
+	let g:RecentFullname = matchstr(&rtp,'[^,]*').'/recent_files'
+<
+On Unix this is most likely
+	~/.vim/recent_files ~
+See also 'runtimepath'.
+
+						*g:RecentStartup*
+Load recent_files at startup (boolean): >
+	let g:RecentStartup = 1
+<
+						*g:RecentWinmode*
+Remembers the current |Winmode| (string): >
+	let g:RecentWinmode = "thiswin"
+<
+    Possible values: "thiswin", "newwin" or "newtab", see |Winmode|.
+
+    This is the only Winmode variable, shared by |recent-keys| and |:Recent|.
+    Yes, if you want Enter to open a new tab, then you must also want :Recent
+    to open a new tab.
+
+						*g:RecentReuse*
+Reuse windows and tabpages (boolean): >
+	let g:RecentReuse = 0
+<
+For an explanation: |:RecentReuse|.
+
+					*g:RecentTypes* *g:RecentHlGroups*
+Syntax Highlighting of files in the list with file suffixes (string): >
+	let g:RecentTypes = ""
+	let g:RecentHlGroups = ""
+<
+    Example (this was the former default): >
+	let g:RecentTypes =  ".cpp|.h|.java,.txt,.vim"
+	let g:RecentHlGroups = "Constant,Identifier,Statement,PreProc,Type,Special"
+<
+	Order matters when associating filetypes to highlight groups:
+		File suffix		Highlighting
+		-------------------------------------
+		.cpp,.h,.java	--->	Constant
+		.txt		--->	Identifier
+		.vim		--->	Statement
+
+    Highlighting groups to choose from: |group-name|, |highlight-groups|.
+    HlGroups are cycled if there are more Types than HlGroups.
+
+						*g:RecentIgnore*
+Files to be ignored (string, |autocmd-pattern|): >
+	let g:RecentIgnore = "*.svn,*.cvs,*.bak,*~"
+<
+Note:	To take a look at the current settings, type >
+		:let Recent<C-A><Enter>
+<	The four variables printed can be changed at any time.  Other
+	g:Recent... variables have been removed by the script after loading.
+
+						*g:RecentMenu*
+By default, a menu is installed with common commands.  This variable holds its
+menu path (string).  Default: >
+	let g:RecentMenu = "Plugin.&Recent."
+
+Disable the menu: >
+	let g:RecentMenu = ""
+
+
+vim:tw=78:fo=tcq2:sts=0:ts=8:sw=8:ft=help:
