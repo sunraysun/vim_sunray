@@ -7,9 +7,12 @@
 
 " Comment: only works in GUI mode
 
-" Version: v0.1.9, inspired by watermark
-" Date: 14 December 2008
+" Version: v0.2.2, inspired by watermark
+" Date: 20 December 2008
 " History:
+" 0.2.2 Removed cterm support, changed visual highlight, fixed bolds
+" 0.2.1 Changed search highlight
+" 0.2.0 Removed italics
 " 0.1.9 Improved search and menu highlighting
 " 0.1.8 Added minimal cterm support
 " 0.1.7 Uploaded to vim.org
@@ -34,142 +37,85 @@ let g:colors_name="maroloccio"
 
 highlight  Normal          guifg=#8b9aaa  guibg=#1a202a  gui=none   "watermark
 
-highlight  StatusLine      guifg=#8b9aaa  guibg=#0e1219             "maroloccio
-highlight  TabLine         guifg=#8b9aaa  guibg=#0e1219             "maroloccio
-highlight  WildMenu        guifg=#8b9aaa  guibg=#0e1219             "maroloccio
+highlight  StatusLine      guifg=#8b9aaa  guibg=#0e1219  gui=none   "maroloccio
+highlight  TabLine         guifg=#8b9aaa  guibg=#0e1219  gui=none   "maroloccio
+highlight  WildMenu        guifg=#8b9aaa  guibg=#0e1219  gui=none   "maroloccio
 
-highlight  LineNr          guifg=#2c3138  guibg=#0e1219  gui=italic "maroloccio
-highlight  VertSplit       guifg=#2c3138  guibg=#0e1219             "maroloccio
-highlight  StatusLineNC    guifg=#2c3138  guibg=#0e1219             "maroloccio
+highlight  LineNr          guifg=#2c3138  guibg=#0e1219  gui=none   "maroloccio
+highlight  StatusLineNC    guifg=#2c3138  guibg=#0e1219  gui=none   "maroloccio
 
-highlight  Folded          guifg=#8b9aaa  guibg=#2c3138             "maroloccio
+highlight  Folded          guifg=#8b9aaa  guibg=#333366  gui=none   "maroloccio
+highlight  VertSplit       guifg=#8b9aaa  guibg=#333366  gui=none   "maroloccio
 
-highlight  Pmenu           guifg=#ffcc00  guibg=#3741ad             "maroloccio
-highlight  Visual          guifg=#ffcc00  guibg=#3741ad             "maroloccio
-highlight  Search          guifg=#ffcc00  guibg=#3741ad             "maroloccio
+highlight  Visual          guifg=#8b9aaa  guibg=#3741ad  gui=none   "maroloccio
 
-highlight  PmenuSel        guifg=#0e1219  guibg=#ffcc00             "maroloccio
-highlight  PmenuSel        gui=bold,italic                          "maroloccio
+highlight  Search          guifg=#78ba42  guibg=#107040  gui=none   "maroloccio
 
-highlight  IncSearch       guifg=#0e1219  guibg=#ffcc00             "maroloccio
-highlight  IncSearch       gui=bold                                 "maroloccio
+highlight  IncSearch       guifg=#0e1219  guibg=#82ade0  gui=bold   "maroloccio
 
-highlight  Cursor          guifg=#0e1219  guibg=#8b9aaa             "maroloccio
+highlight  Cursor          guifg=#0e1219  guibg=#8b9aaa  gui=none   "maroloccio
 
-highlight  CursorLine      guibg=#0e1219  "guifg=                   "maroloccio
-highlight  CursorColumn    guibg=#0e1219  "guifg=                   "maroloccio
-
-highlight  NonText         guifg=#2c3138  "guibg=                   "maroloccio
-highlight  SpecialKey      guifg=#2c3138  "guibg=                   "maroloccio
+highlight  NonText         guifg=#333366  "gui=none      "metal     "maroloccio
+highlight  SpecialKey      guifg=#333366  "gui=none      "metal     "maroloccio
 
 highlight  Todo            guifg=#8f3231  guibg=#0e1219             "maroloccio
-highlight  Todo            guisp=#cbc32a  gui=bold,italic,undercurl "maroloccio
+highlight  Todo            guisp=#cbc32a  gui=bold,undercurl        "maroloccio
 
-highlight  Conditional     guifg=#ff9900  gui=italic     "orange    "maroloccio
+highlight  Conditional     guifg=#ff9900  gui=none       "orange    "maroloccio
 
-highlight  Repeat          guifg=#78ba42  gui=italic     "lit green "maroloccio
+highlight  Repeat          guifg=#78ba42  gui=none       "lit green "maroloccio
 
-highlight  Constant        guifg=#82ade0  "guibg=        "cyan      "maroloccio
-highlight  String          guifg=#82ade0  "guibg=        "cyan      "maroloccio
-highlight  Character       guifg=#82ade0  "guibg=        "cyan      "maroloccio
-highlight  Number          guifg=#82ade0  "guibg=        "cyan      "maroloccio
-highlight  Boolean         guifg=#82ade0  "guibg=        "cyan      "maroloccio
-highlight  Float           guifg=#82ade0  "guibg=        "cyan      "maroloccio
+highlight  Constant        guifg=#82ade0  gui=none       "cyan      "maroloccio
+highlight  String          guifg=#82ade0  gui=none       "cyan      "maroloccio
+highlight  Character       guifg=#82ade0  gui=none       "cyan      "maroloccio
+highlight  Number          guifg=#82ade0  gui=none       "cyan      "maroloccio
+highlight  Boolean         guifg=#82ade0  gui=none       "cyan      "maroloccio
+highlight  Float           guifg=#82ade0  gui=none       "cyan      "maroloccio
 
-highlight  Function        guifg=#ffcc00  gui=italic     "yellow    "maroloccio
-highlight  Type            guifg=#ffcc00  gui=italic     "yellow    "maroloccio
-highlight  StorageClass    guifg=#ffcc00  gui=italic     "yellow    "maroloccio
-highlight  Structure       guifg=#ffcc00  gui=italic     "yellow    "maroloccio
-highlight  Typedef         guifg=#ffcc00  gui=italic     "yellow    "maroloccio
+highlight  Function        guifg=#ffcc00  gui=none       "yellow    "maroloccio
+highlight  Type            guifg=#ffcc00  gui=none       "yellow    "maroloccio
+highlight  StorageClass    guifg=#ffcc00  gui=none       "yellow    "maroloccio
+highlight  Structure       guifg=#ffcc00  gui=none       "yellow    "maroloccio
+highlight  Typedef         guifg=#ffcc00  gui=none       "yellow    "maroloccio
 
-highlight  PreProc         guifg=#107040  gui=italic     "green     "maroloccio
-highlight  Include         guifg=#107040  gui=italic     "green     "maroloccio
-highlight  Define          guifg=#107040  gui=italic     "green     "maroloccio
-highlight  Macro           guifg=#107040  gui=italic     "green     "maroloccio
-highlight  PreCondit       guifg=#107040  gui=italic     "green     "maroloccio
+highlight  PreProc         guifg=#107040  gui=none       "green     "maroloccio
+highlight  Include         guifg=#107040  gui=none       "green     "maroloccio
+highlight  Define          guifg=#107040  gui=none       "green     "maroloccio
+highlight  Macro           guifg=#107040  gui=none       "green     "maroloccio
+highlight  PreCondit       guifg=#107040  gui=none       "green     "maroloccio
 
 highlight  Error           guifg=#8b9aaa  guibg=#8f3231  "red bkgr  "maroloccio
-highlight  Error           gui=italic                               "maroloccio
 
 highlight  Underlined      gui=bold,underline            "underline "maroloccio
 
-highlight  Exception       guifg=#8f3231  gui=italic     "red       "maroloccio
+highlight  Exception       guifg=#8f3231  gui=none       "red       "maroloccio
+highlight  Title           guifg=#8f3231  gui=none       "red       "maroloccio
 
-highlight  Statement       guifg=#9966ff  gui=italic     "lavender  "maroloccio
+highlight  Statement       guifg=#9966cc  gui=none       "lavender  "maroloccio
 
-highlight  Comment         guifg=#006666  gui=italic     "teal      "maroloccio
-highlight  SpecialComment  guifg=#2680af  gui=italic     "blue2     "maroloccio
+highlight  Comment         guifg=#006666  gui=none       "teal      "maroloccio
 
-highlight  Operator        guifg=#6d5279  gui=italic     "pink      "maroloccio
+highlight  SpecialComment  guifg=#2680af  gui=none       "blue2     "maroloccio
 
-highlight  Special         guifg=#3741ad  gui=italic     "blue      "maroloccio
-highlight  SpecialChar     guifg=#3741ad  gui=italic     "blue      "maroloccio
-highlight  Tag             guifg=#3741ad  gui=italic     "blue      "maroloccio
-highlight  Delimiter       guifg=#3741ad  gui=italic     "blue      "maroloccio
+highlight  Operator        guifg=#6d5279  gui=none       "pink      "maroloccio
 
-highlight  Label           guifg=#7e28a9  gui=italic     "purple    "maroloccio
+highlight  Special         guifg=#3741ad  gui=none       "blue      "maroloccio
+highlight  SpecialChar     guifg=#3741ad  gui=none       "blue      "maroloccio
+highlight  Tag             guifg=#3741ad  gui=none       "blue      "maroloccio
+highlight  Delimiter       guifg=#3741ad  gui=none       "blue      "maroloccio
 
-" ------------------------------------------------------------------------------
+highlight  Label           guifg=#7e28a9  gui=none       "purple    "maroloccio
 
-highlight  Normal          ctermfg=lightgrey ctermbg=darkgrey
+if version >= 700
 
-highlight  StatusLine      ctermfg=lightgrey ctermbg=black
-highlight  TabLine         ctermfg=lightgrey ctermbg=black
-highlight  WildMenu        ctermfg=lightgrey ctermbg=black
+highlight  Pmenu           guifg=#8b9aaa  guibg=#3741ad  gui=none   "maroloccio
+highlight  PmenuSel        guifg=#8b9aaa  guibg=#333366  gui=none   "maroloccio
 
-highlight  LineNr          ctermfg=darkgrey  ctermbg=black
-highlight  VertSplit       ctermfg=darkgrey  ctermbg=black
-highlight  StatusLineNC    ctermfg=darkgrey  ctermbg=black
+highlight  CursorLine      guibg=#0e1219  "guifg=        gui=none   "maroloccio
+highlight  CursorColumn    guibg=#0e1219  "guifg=        gui=none   "maroloccio
 
-highlight  Folded          ctermfg=lightgrey ctermbg=darkgrey
-highlight  Pmenu           ctermfg=lightgrey ctermbg=darkgrey
+highlight  MatchParen      guifg=#0e1219  guibg=#78ba42  gui=none   "maroloccio
 
-highlight  Visual          ctermfg=darkgrey  ctermbg=lightgrey
-highlight  PmenuSel        ctermfg=darkgrey  ctermbg=lightgrey
-highlight  Search          ctermfg=darkgrey  ctermbg=lightgrey
-highlight  IncSearch       ctermfg=darkgrey  ctermbg=lightgrey
-
-highlight  Cursor          ctermfg=black     ctermbg=lightgrey
-
-highlight  Todo            ctermfg=red       ctermbg=black
-
-highlight  CursorLine      ctermbg=black     cterm=underline
-highlight  CursorColumn    ctermbg=black
-
-highlight  NonText         ctermfg=darkgrey
-highlight  SpecialKey      ctermfg=darkgrey
-
-highlight  Repeat          ctermfg=green
-
-highlight  Constant        ctermfg=cyan
-highlight  String          ctermfg=cyan
-highlight  Character       ctermfg=cyan
-highlight  Number          ctermfg=cyan
-highlight  Boolean         ctermfg=cyan
-highlight  Float           ctermfg=cyan
-
-highlight  Type            ctermfg=yellow
-highlight  StorageClass    ctermfg=yellow
-highlight  Structure       ctermfg=yellow
-highlight  Typedef         ctermfg=yellow
-highlight  Function        ctermfg=yellow
-
-highlight  Exception       ctermfg=red
-
-highlight  Error           ctermbg=red
-highlight  Underlined      cterm=underline
-
-highlight  Statement       ctermfg=magenta
-
-highlight  Comment         ctermfg=white
-highlight  SpecialComment  ctermfg=white
-
-highlight  Special         ctermfg=blue
-highlight  SpecialChar     ctermfg=blue
-highlight  Tag             ctermfg=blue
-highlight  Delimiter       ctermfg=blue
-
-highlight  Operator        ctermfg=darkmagenta
-highlight  Label           ctermfg=darkred
+endif
 
 " ------------------------------------------------------------------------------
