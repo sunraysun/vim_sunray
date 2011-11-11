@@ -1,6 +1,6 @@
 set number
 set guifont=monaco
-colorscheme ir_black
+colorscheme jellybeans
 "colorscheme macvim
 "colorscheme darkspectrum
 set backspace=indent,eol,start
@@ -30,7 +30,7 @@ map <leader>f :FufFile <CR>
 map <leader>b :FufBuffer<CR>
 set encoding=utf-8
 set fileencodings=utf-8,chinese
-set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [%{&encoding}]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
+set statusline=%F%m%r%h%w\ [%{&ff}]\ [%Y]\ [%{&encoding}]\ [%04l,%04v][%p%%]\ [%L]\ [%{fugitive#statusline()}]
 set laststatus=2
 
 if has('gui_running')
