@@ -24,6 +24,7 @@ let g:SuperTabDefaultCompletionType="<C-X><C-O>"
 set guioptions-=T
 let mapleader="," 
 map <leader>d :NERDTreeToggle <CR>
+map <leader>t :TlistToggle <CR>
 let g:fuzzy_ignore = "*.log"
 let g:fuzzy_matching_limit = 70
 map <leader>f :FufFile <CR>
