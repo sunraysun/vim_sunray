@@ -29,6 +29,7 @@ let g:fuzzy_ignore = "*.log"
 let g:fuzzy_matching_limit = 70
 map <leader>f :FufFile <CR>
 map <leader>b :FufBuffer<CR>
+map <C-T> :CommandT<CR>
 set encoding=utf-8
 set fileencodings=utf-8,chinese
 set statusline=%F%m%r%h%w\ [%{&ff}]\ [%Y]\ [%{&encoding}]\ [%04l,%04v][%p%%]\ [%L]\ [%{fugitive#statusline()}]
