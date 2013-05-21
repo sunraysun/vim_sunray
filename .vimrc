@@ -18,6 +18,8 @@ set smarttab
 set expandtab
 set shiftwidth=2
 set tabstop=4
+set guioptions-=r
+set guioptions-=L
 
 
 filetype off                   " required!
@@ -31,6 +33,14 @@ Bundle 'gmarik/vundle'
 
 Bundle "pangloss/vim-javascript"
 Bundle "myhere/vim-nodejs-complete"
+Bundle "skammer/vim-css-color"
+Bundle "tpope/vim-haml"
+Bundle "hail2u/vim-css3-syntax"
+Bundle "wavded/vim-stylus"
+Bundle "groenewege/vim-less"
+Bundle "digitaltoad/vim-jade"
+Bundle "kchmck/vim-coffee-script"
+
 Bundle "Townk/vim-autoclose"
 Bundle "scrooloose/nerdtree"
 Bundle "scrooloose/nerdcommenter"
@@ -40,9 +50,6 @@ Bundle "AKurilin/matchit.vim"
 Bundle "msanders/snipmate.vim"
 Bundle "ervandew/supertab"
 Bundle "kien/ctrlp.vim"
-Bundle "kchmck/vim-coffee-script"
-Bundle "digitaltoad/vim-jade"
-Bundle "groenewege/vim-less"
 Bundle "honza/vim-snippets"
 Bundle "vim-scripts/taglist.vim"
 Bundle "godlygeek/tabular"
