@@ -1,6 +1,7 @@
 set number
+set noswapfile
 "set guifont=Monaco:h13
-:set guifont=Monaco\ for\ Powerline:h12
+:set guifont=Monaco\ for\ Powerline
 "colorscheme jellybeans
 "colorscheme macvim
 set bg=dark    " Setting dark mode 
@@ -13,6 +14,9 @@ set cursorline
 set incsearch
 set nocompatible
 set mouse=a
+vnoremap < <gv
+vnoremap > >gv
+set cuc
 "set smartindent
 set smarttab
 set expandtab
@@ -21,6 +25,7 @@ set tabstop=4
 set guioptions-=r
 set guioptions-=L
 
+autocmd BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
 
 filetype off                   " required!
 
@@ -72,6 +77,15 @@ let g:indent_guides_guide_size = 1
 
 
 let g:ctrlp_working_path_mode = 'ra'
+" set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
+
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+let g:ctrlp_custom_ignore = {'dir': '/node_moudles/'}
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ 'link': 'some_bad_symbolic_links',
+  \ }
 
 " Disable output and VCS files
 set wildignore+=*.o,*.out,*.obj,.git,*.rbc,*.class,.svn,*.gem
