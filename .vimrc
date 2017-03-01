@@ -1,7 +1,7 @@
 set number
 set noswapfile
-"set guifont=Monaco:h13
-:set guifont=Monaco\ for\ Powerline
+"set guifont=Monaco:h14
+:set guifont=Monaco\ for\ Powerline:h13
 "colorscheme jellybeans
 "colorscheme macvim
 set bg=dark    " Setting dark mode 
@@ -45,14 +45,15 @@ Plugin 'hail2u/vim-css3-syntax'
 Plugin 'wavded/vim-stylus'
 Plugin 'groenewege/vim-less'
 Plugin 'digitaltoad/vim-jade'
-Plugin 'kchmck/vim-coffee-script'
-
+"Plugin 'kchmck/vim-coffee-script'
+Plugin 'isRuslan/vim-es6'
+Plugin 'posva/vim-vue'
 Plugin 'Townk/vim-autoclose'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
-Plugin 'edsono/vim-matchit'
+"Plugin 'edsono/vim-matchit'
 Plugin 'garbas/vim-snipmate'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
@@ -66,6 +67,8 @@ Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'vim-scripts/darkZ'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'Lokaltog/vim-powerline'
+Plugin 'mattn/emmet-vim'
+
 call vundle#end()       
 
 filetype plugin indent on
@@ -135,3 +138,6 @@ endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 let g:Powerline_symbols = 'fancy'
+
+let g:user_emmet_mode='a'
+let g:user_emmet_expandabbr_key = '<Tab>'
