@@ -1,7 +1,7 @@
 set number
 set noswapfile
 "set guifont=Monaco:h14
-:set guifont=Monaco\ for\ Powerline:h13
+:set guifont=Monaco\ for\ Powerline\ 11
 "colorscheme jellybeans
 "colorscheme macvim
 set bg=dark    " Setting dark mode 
@@ -36,7 +36,7 @@ call vundle#begin()
 "call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, requi
-Plugin 'gmarik/Vundle.vim'
+Plugin 'VundleVim/Vundle.vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'myhere/vim-nodejs-complete'
 Plugin 'skammer/vim-css-color'
@@ -66,7 +66,8 @@ Plugin 'nathanaelkane/vim-indent-guides'
 
 Plugin 'vim-scripts/darkZ'
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'Lokaltog/vim-powerline'
+Plugin 'vim-airline/vim-airline'
+"Plugin 'Lokaltog/vim-powerline'
 Plugin 'mattn/emmet-vim'
 
 call vundle#end()       
@@ -117,8 +118,7 @@ map <leader>d :NERDTreeToggle <CR>
 map <leader>t :TlistToggle <CR>
 set encoding=utf-8
 set fileencodings=utf-8,chinese
-
-set statusline=%F%m%r%h%w\ [%{&ff}]\ [%Y]\ [%{&encoding}]\ [%04l,%04v][%p%%]\ [%L]\ [%{fugitive#statusline()}]
+let g:airline_powerline_fonts = 1
 set laststatus=2
 
 if has('gui_running')
