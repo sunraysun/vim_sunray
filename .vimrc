@@ -5,8 +5,8 @@ set noswapfile
 "colorscheme jellybeans
 "colorscheme macvim
 set bg=dark    " Setting dark mode 
-colorscheme  solarized
-"colorscheme darkZ 
+"colorscheme  solarized
+colorscheme darkZ 
 set backspace=indent,eol,start
 syntax on
 set hls
