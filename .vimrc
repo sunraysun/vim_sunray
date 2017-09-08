@@ -37,6 +37,7 @@ call vundle#begin()
 
 " let Vundle manage Vundle, requi
 Plugin 'VundleVim/Vundle.vim'
+Plugin 'Yggdroot/LeaderF'
 Plugin 'pangloss/vim-javascript'
 Plugin 'myhere/vim-nodejs-complete'
 Plugin 'skammer/vim-css-color'
@@ -45,7 +46,7 @@ Plugin 'hail2u/vim-css3-syntax'
 Plugin 'wavded/vim-stylus'
 Plugin 'groenewege/vim-less'
 Plugin 'digitaltoad/vim-jade'
-"Plugin 'kchmck/vim-coffee-script'
+Plugin 'kchmck/vim-coffee-script'
 Plugin 'isRuslan/vim-es6'
 Plugin 'posva/vim-vue'
 Plugin 'Townk/vim-autoclose'
@@ -53,21 +54,17 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
-"Plugin 'edsono/vim-matchit'
 Plugin 'garbas/vim-snipmate'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'ervandew/supertab'
-Plugin 'kien/ctrlp.vim'
 Plugin 'honza/vim-snippets'
 Plugin 'vim-scripts/taglist.vim'
 Plugin 'godlygeek/tabular'
 Plugin 'nathanaelkane/vim-indent-guides'
-
 Plugin 'vim-scripts/darkZ'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'vim-airline/vim-airline'
-"Plugin 'Lokaltog/vim-powerline'
 Plugin 'mattn/emmet-vim'
 
 call vundle#end()       
@@ -137,7 +134,6 @@ endif
 
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
-let g:Powerline_symbols = 'fancy'
 
 let g:user_emmet_mode='a'
 let g:user_emmet_expandabbr_key = '<Tab>'
