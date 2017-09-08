@@ -1,3 +1,5 @@
+execute pathogen#infect()
+
 set number
 set noswapfile
 "set guifont=Monaco:h14
@@ -6,7 +8,7 @@ set noswapfile
 "colorscheme macvim
 set bg=dark    " Setting dark mode 
 "colorscheme  solarized
-colorscheme darkZ 
+colorscheme one 
 set backspace=indent,eol,start
 syntax on
 set hls
@@ -63,6 +65,7 @@ Plugin 'vim-scripts/taglist.vim'
 Plugin 'godlygeek/tabular'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'vim-scripts/darkZ'
+Plugin 'rakr/vim-one'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'vim-airline/vim-airline'
 Plugin 'mattn/emmet-vim'
@@ -80,7 +83,7 @@ au FileType javascript set dictionary+=$HOME/.vim/dict/node.dict
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_guide_size = 1
 
-
+let g:one_allow_italics = 1 
 let g:ctrlp_working_path_mode = 'ra'
 " set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
 
