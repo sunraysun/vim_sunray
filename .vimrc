@@ -8,9 +8,10 @@ set noswapfile
 "colorscheme macvim
 set bg=dark    " Setting dark mode 
 "colorscheme  solarized
-colorscheme one 
-set backspace=indent,eol,start
 syntax on
+color dracula
+"colorscheme one 
+set backspace=indent,eol,start
 set hls
 set cursorline
 set incsearch
@@ -47,7 +48,7 @@ Plugin 'tpope/vim-haml'
 Plugin 'hail2u/vim-css3-syntax'
 Plugin 'wavded/vim-stylus'
 Plugin 'groenewege/vim-less'
-Plugin 'digitaltoad/vim-jade'
+Plugin 'digitaltoad/vim-pug'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'isRuslan/vim-es6'
 Plugin 'posva/vim-vue'
@@ -69,7 +70,8 @@ Plugin 'rakr/vim-one'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'vim-airline/vim-airline'
 Plugin 'mattn/emmet-vim'
-
+Plugin 'dracula/vim'
+Plugin 'HerringtonDarkholme/yats.vim'
 call vundle#end()       
 
 filetype plugin indent on
@@ -106,7 +108,7 @@ set wildignore+=*/vendor/gems/*,*/node_modules/*,*/bower_components/*,*/vendor/c
 set wildignore+=*.swp,*~,._*
 
 "autocmd FileType ruby setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
-set columns=100 lines=40
+
 let g:allml_global_maps = 1
 let g:SuperTabRetaincompletionType=2
 let g:SuperTabDefaultCompletionType="<C-X><C-O>"
@@ -140,3 +142,4 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 
 let g:user_emmet_mode='a'
 let g:user_emmet_expandabbr_key = '<Tab>'
+let g:vue_disable_pre_processors=1
